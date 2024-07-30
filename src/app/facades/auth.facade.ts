@@ -1,5 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { LoginPayload, RegisterPayload } from '../core/interfaces/auth-payload';
+import {
+  LoginPayload,
+  RegisterPayload,
+} from '../core/interfaces/auth.interface';
 import { tap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../core/services/storage.service';

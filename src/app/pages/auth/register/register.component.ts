@@ -10,7 +10,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component';
 import { passwordMatchValidator } from '../../../core/validators/password.validator';
-import { RegisterPayload } from '../../../core/interfaces/auth-payload';
+import { RegisterPayload } from '../../../core/interfaces/auth.interface';
 import { AuthFacade } from '../../../facades/auth.facade';
 import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
 

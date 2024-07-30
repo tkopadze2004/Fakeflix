@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component';
-import { LoginPayload } from '../../../core/interfaces/auth-payload';
+import { LoginPayload } from '../../../core/interfaces/auth.interface';
 import { AuthFacade } from '../../../facades/auth.facade';
 import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
 

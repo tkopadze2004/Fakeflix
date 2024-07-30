@@ -3,6 +3,5 @@ export interface Button {
   type: string;
   cssClass: string;
   imgSrc?: string;
-  submit?: boolean;
-
+  submit: boolean;
 }

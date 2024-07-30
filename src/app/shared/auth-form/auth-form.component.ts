@@ -1,4 +1,4 @@
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from '../alert/alert.component';
@@ -7,7 +7,7 @@ import { Button } from '../../core/interfaces/buttons.interface';
 @Component({
   selector: 'app-auth-form',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass, AlertComponent, NgIf],
+  imports: [ReactiveFormsModule, NgClass, AlertComponent],
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.scss',
 })
@@ -22,7 +22,7 @@ export class AuthFormComponent {
   @Input() errorMessage!: string | null;
   @Input() successMessage!: string | null;
 
-  getErrorMessage(controlName: string): string {
+ public getErrorMessage(controlName: string): string {
     const control = this.formGroup.get(controlName);
     if (!control) {
       return '';
