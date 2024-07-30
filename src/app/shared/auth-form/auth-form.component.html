@@ -44,6 +44,12 @@
         }
       </div>
     </form>
+    <ng-container *ngIf="errorMessage">
+      <app-alert type="error" [message]="errorMessage"></app-alert>
+    </ng-container>
+    <ng-container *ngIf="successMessage">
+      <app-alert type="success" [message]="successMessage"></app-alert>
+    </ng-container>
     <ng-content></ng-content>
   </div>
 </div>

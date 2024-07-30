@@ -1,11 +1,12 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AlertComponent } from "../alert/alert.component";
 
 @Component({
   selector: 'app-auth-form',
   standalone: true,
-  imports: [ReactiveFormsModule, NgClass],
+  imports: [ReactiveFormsModule, NgClass, AlertComponent,NgIf],
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.scss',
 })
@@ -22,6 +23,8 @@ export class AuthFormComponent {
   }[];
   @Input() redirectLabel!: string;
   @Output() formSubmit = new EventEmitter();
+  @Input() errorMessage!: string | null ;
+  @Input() successMessage!: string|null ;
 
   getErrorMessage(controlName: string): string {
     const control = this.formGroup.get(controlName);
@@ -61,6 +64,5 @@ export class AuthFormComponent {
   }
 
   onButtonClick(): void {
-    this.formSubmit.emit();
-  }
+   this.formSubmit.emit();  }
 }

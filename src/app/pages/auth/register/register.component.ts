@@ -12,7 +12,7 @@ import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component
 import { passwordMatchValidator } from '../../../core/validators/password.validator';
 import { AuthPayload } from '../../../core/interfaces/auth-payload';
 import { AuthFacade } from '../../../facades/auth.facade';
-import { catchError, delay, Subject, takeUntil, throwError } from 'rxjs';
+import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -22,21 +22,23 @@ import { catchError, delay, Subject, takeUntil, throwError } from 'rxjs';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+  private readonly authFacade = inject(AuthFacade);
   private sub$ = new Subject();
   private router = inject(Router);
-  private readonly authFacade = inject(AuthFacade);
-  registerForm!: FormGroup;
-  formFields = [
+  public errorMessage: string | null = null;
+  public successMessagge: string | null = null;
+  public registerForm!: FormGroup;
+  
+
+  public formFields = [
     { name: 'name', type: 'text', placeholder: 'Your Name' },
     { name: 'email', type: 'email', placeholder: 'E-mail' },
     { name: 'password', type: 'password', placeholder: 'Password' },
-    {
-      name: 'confirmPassword',
-      type: 'password',
-      placeholder: 'Repeat your password',
-    },
+    { name: 'confirmPassword',type: 'password', placeholder: 'Repeat your password'},
   ];
-  buttons = [{ text: 'Sign up', type: 'submit', cssClass: 'btn btn-primary' }];
+  public buttons = [
+    { text: 'Sign up', type: 'submit', cssClass: 'btn btn-primary' },
+  ];
 
   constructor(private fb: FormBuilder) {}
 
@@ -61,27 +63,18 @@ export class RegisterComponent {
     );
   }
 
-  handleFormSubmit() {
-    console.log('hi');
-
+  public handleFormSubmit() {
     this.registerForm.markAllAsTouched();
     if (this.registerForm.invalid) {
       return;
     }
 
-    // this.errorMessage = null;
-    // this.successMessagge = null;
+    this.errorMessage = null;
+    this.successMessagge = null;
 
-    const { email, password } = this.registerForm.value as {
+    const payload = this.registerForm.value as AuthPayload as {
       email: string;
       password: string;
-    };
-    email.trim();
-    password.trim();
-
-    const payload: AuthPayload = {
-      email,
-      password,
     };
 
     this.authFacade
@@ -89,10 +82,13 @@ export class RegisterComponent {
       .pipe(
         takeUntil(this.sub$),
         catchError(({ error }) => {
-          // this.errorMessage = error.error.message;
+          this.errorMessage = error.error.message;
           return throwError(() => error.error.message);
         }),
-        delay(2000) 
+        tap(() => {
+          this.successMessagge = 'Registration Successful!';
+        }),
+        delay(2000)
       )
       .subscribe(() => {
         this.router.navigate(['/']);

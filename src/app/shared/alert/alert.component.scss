@@ -1,0 +1,22 @@
+.alert {
+  margin-top: 20px;
+  &.error {
+    .alert-message {
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      line-height: 175%;
+      color: orange;
+      font-weight: 600;
+    }
+  }
+  &.success {
+    .alert-message {
+      font-family: Inter, sans-serif;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 175%;
+      color: green;
+    }
+  }
+
+}
