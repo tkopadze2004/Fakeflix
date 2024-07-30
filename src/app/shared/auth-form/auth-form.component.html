@@ -32,7 +32,7 @@
         <button
           [type]="button.type"
           [ngClass]="button.cssClass"
-          (click)="onButtonClick()"
+          (click)="onButtonClick(button)"
         >
           @if (button.imgSrc) {
           <ng-container>

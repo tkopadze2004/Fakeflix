@@ -7,6 +7,13 @@
   min-height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  overflow-y: hidden;
+}
+@media (max-height: 620px) {
+  .background-container {
+    height: 100%;
+    overflow-y: auto;
+  }
 }
 
 :root {

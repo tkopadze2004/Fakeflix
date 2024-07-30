@@ -25,17 +25,24 @@ export class LoginComponent {
     { name: 'password', type: 'password', placeholder: 'Password' },
   ];
   buttons = [
-    { text: 'Sign in', type: 'submit', cssClass: 'btn btn-primary' },
+    {
+      text: 'Sign in',
+      type: 'submit',
+      cssClass: 'btn btn-primary',
+      submit: true,
+    },
     {
       text: 'Sign in with Google',
       type: 'button',
       cssClass: 'btn btn-google',
       imgSrc: '/images/google.png',
+      submit: false,
     },
     {
       text: 'Sign in anonymously',
       type: 'button',
       cssClass: 'btn btn-anonymous',
+      submit: false,
     },
   ];
 

@@ -40,7 +40,12 @@ export class RegisterComponent {
     },
   ];
   public buttons = [
-    { text: 'Sign up', type: 'submit', cssClass: 'btn btn-primary' },
+    {
+      text: 'Sign up',
+      type: 'submit',
+      cssClass: 'btn btn-primary',
+      submit: true,
+    },
   ];
 
   constructor(private fb: FormBuilder) {}
