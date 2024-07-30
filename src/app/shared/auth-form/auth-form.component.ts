@@ -13,7 +13,7 @@ import { Button } from '../../core/interfaces/buttons.interface';
 })
 export class AuthFormComponent {
   @Input() formGroup!: FormGroup;
-  @Input() title!: string;
+  @Input() name!: string;
   @Input() warning!: string;
   @Input() formFields!: { name: string; type: string; placeholder: string }[];
   @Input() buttons!: Button[];
