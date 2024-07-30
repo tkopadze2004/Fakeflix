@@ -1,0 +1,13 @@
+<app-auth-form
+[formGroup]="registerForm"
+title="Sign Up"
+warning="Pay attention: this is not the original Netflix sign up. Don't insert your real credentials here!"
+[formFields]="formFields"
+[buttons]="buttons"
+>
+<div class="signup">
+  <span>Already have an account? <a [routerLink]="['/']">Sign In</a></span>
+</div>
+</app-auth-form>
+
+

@@ -1,4 +1,4 @@
-import { NgClass} from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class AuthFormComponent {
   @Input() title!: string;
   @Input() warning!: string;
   @Input() formFields!: { name: string; type: string; placeholder: string }[];
-  @Input() buttons!: { text: string; type: string; cssClass: string;imgSrc?: string }[];
+  @Input() buttons!: { text: string;type: string;cssClass: string;imgSrc?: string;}[];
   @Input() redirectLabel!: string;
   getErrorMessage(controlName: string): string {
     const control = this.formGroup.get(controlName);
@@ -23,6 +23,12 @@ export class AuthFormComponent {
       return '';
     }
 
+    if (
+      (control.hasError('required') || control.hasError('name')) &&
+      controlName === 'name'
+    ) {
+      return 'Please enter your name.';
+    }
     if (
       (control.hasError('required') || control.hasError('email')) &&
       controlName === 'email'
