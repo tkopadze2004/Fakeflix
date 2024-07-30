@@ -10,7 +10,7 @@ import {
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component';
 import { passwordMatchValidator } from '../../../core/validators/password.validator';
-import { AuthPayload } from '../../../core/interfaces/auth-payload';
+import { RegisterPayload } from '../../../core/interfaces/auth-payload';
 import { AuthFacade } from '../../../facades/auth.facade';
 import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
 
@@ -28,13 +28,16 @@ export class RegisterComponent {
   public errorMessage: string | null = null;
   public successMessagge: string | null = null;
   public registerForm!: FormGroup;
-  
 
   public formFields = [
     { name: 'name', type: 'text', placeholder: 'Your Name' },
     { name: 'email', type: 'email', placeholder: 'E-mail' },
     { name: 'password', type: 'password', placeholder: 'Password' },
-    { name: 'confirmPassword',type: 'password', placeholder: 'Repeat your password'},
+    {
+      name: 'confirmPassword',
+      type: 'password',
+      placeholder: 'Repeat your password',
+    },
   ];
   public buttons = [
     { text: 'Sign up', type: 'submit', cssClass: 'btn btn-primary' },
@@ -72,9 +75,11 @@ export class RegisterComponent {
     this.errorMessage = null;
     this.successMessagge = null;
 
-    const payload = this.registerForm.value as AuthPayload as {
+    const payload = this.registerForm.value as RegisterPayload as {
+      name: string;
       email: string;
       password: string;
+      currentPassword: string;
     };
 
     this.authFacade

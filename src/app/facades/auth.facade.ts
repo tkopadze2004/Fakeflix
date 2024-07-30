@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { AuthPayload } from '../core/interfaces/auth-payload';
+import { RegisterPayload } from '../core/interfaces/auth-payload';
 import { tap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../core/services/storage.service';
@@ -25,8 +25,8 @@ export class AuthFacade {
     return this.storageService.getItem('user');
   }
 
-  register(payload: AuthPayload) {
-    return this.authService.register(payload).pipe(
+  register(registerPayload: RegisterPayload) {
+    return this.authService.register(registerPayload).pipe(
       tap((res) => {
         this.storageService.setItem('token', res.idToken);
         this.storageService.setItem('refreshToken', res.refreshToken);
