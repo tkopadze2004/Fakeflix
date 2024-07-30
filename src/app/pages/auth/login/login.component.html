@@ -4,6 +4,9 @@
   warning="Pay attention: this is not the original Netflix sign in. Don't insert your real credentials here!"
   [formFields]="formFields"
   [buttons]="buttons"
+  (formSubmit)="handleFormSubmit()"
+  [errorMessage]="errorMessage"
+  [successMessage]="successMessagge"
 >
   <div class="signup">
     <span

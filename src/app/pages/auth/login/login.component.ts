@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component';
+import { LoginPayload } from '../../../core/interfaces/auth-payload';
+import { AuthFacade } from '../../../facades/auth.facade';
+import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +14,12 @@ import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  loginForm!: FormGroup;
+  private readonly authFacade = inject(AuthFacade);
+  public loginForm!: FormGroup;
+  private router = inject(Router);
+  private sub$ = new Subject();
+  public errorMessage: string | null = null;
+  public successMessagge: string | null = null;
   formFields = [
     { name: 'email', type: 'email', placeholder: 'E-mail' },
     { name: 'password', type: 'password', placeholder: 'Password' },
@@ -45,5 +53,39 @@ export class LoginComponent {
         ],
       ],
     });
+  }
+
+  handleFormSubmit() {
+    this.loginForm.markAllAsTouched();
+    if (this.loginForm.invalid) {
+      return;
+    }
+    this.errorMessage = null;
+    this.successMessagge = null;
+    const payload = this.loginForm.value as LoginPayload as {
+      email: string;
+      password: string;
+    };
+
+    this.authFacade
+      .login(payload)
+      .pipe(
+        takeUntil(this.sub$),
+        catchError(({ error }) => {
+          this.errorMessage = error.error.message;
+          return throwError(() => error.error.message);
+        }),
+        tap(() => {
+          this.successMessagge = 'Login Successful!';
+        }),
+        delay(2000)
+      )
+      .subscribe(() => {
+        this.router.navigate(['/register']);
+      });
+  }
+  ngOnDestroy(): void {
+    this.sub$.next(null);
+    this.sub$.complete();
   }
 }
