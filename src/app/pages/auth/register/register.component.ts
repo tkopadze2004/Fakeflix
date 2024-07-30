@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   AbstractControlOptions,
   FormBuilder,
@@ -7,9 +7,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component';
 import { passwordMatchValidator } from '../../../core/validators/password.validator';
+import { AuthPayload } from '../../../core/interfaces/auth-payload';
+import { AuthFacade } from '../../../facades/auth.facade';
+import { catchError, delay, Subject, takeUntil, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +22,9 @@ import { passwordMatchValidator } from '../../../core/validators/password.valida
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+  private sub$ = new Subject();
+  private router = inject(Router);
+  private readonly authFacade = inject(AuthFacade);
   registerForm!: FormGroup;
   formFields = [
     { name: 'name', type: 'text', placeholder: 'Your Name' },
@@ -53,5 +59,47 @@ export class RegisterComponent {
         validators: passwordMatchValidator,
       } as AbstractControlOptions
     );
+  }
+
+  handleFormSubmit() {
+    console.log('hi');
+
+    this.registerForm.markAllAsTouched();
+    if (this.registerForm.invalid) {
+      return;
+    }
+
+    // this.errorMessage = null;
+    // this.successMessagge = null;
+
+    const { email, password } = this.registerForm.value as {
+      email: string;
+      password: string;
+    };
+    email.trim();
+    password.trim();
+
+    const payload: AuthPayload = {
+      email,
+      password,
+    };
+
+    this.authFacade
+      .register(payload)
+      .pipe(
+        takeUntil(this.sub$),
+        catchError(({ error }) => {
+          // this.errorMessage = error.error.message;
+          return throwError(() => error.error.message);
+        }),
+        delay(2000) 
+      )
+      .subscribe(() => {
+        this.router.navigate(['/']);
+      });
+  }
+  ngOnDestroy(): void {
+    this.sub$.next(null);
+    this.sub$.complete();
   }
 }

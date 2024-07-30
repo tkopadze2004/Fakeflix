@@ -29,7 +29,11 @@
       </div>
       <div class="form-buttons">
         @for (button of buttons; track button) {
-        <button [type]="button.type" [ngClass]="button.cssClass">
+        <button
+          [type]="button.type"
+          [ngClass]="button.cssClass"
+          (click)="onButtonClick()"
+        >
           @if (button.imgSrc) {
           <ng-container>
             <img [src]="button.imgSrc" alt="Icon" class="btn-icon" />
