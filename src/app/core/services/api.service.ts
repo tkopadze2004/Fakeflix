@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 Injectable({ providedIn: 'root' });
 export class ApiService {
   http: HttpClient = inject(HttpClient);
-  post<T>(path: string, body: any): Observable<T> {
+  post<T>(path: string, body: unknown): Observable<T> {
     return this.http.post<T>(`${path}`, body);
   }
 }
