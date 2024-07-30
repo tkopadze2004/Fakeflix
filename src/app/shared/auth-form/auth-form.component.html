@@ -1,0 +1,45 @@
+<div class="auth-container">
+  <div class="auth-container__form">
+    <h2 class="auth-container__form--title">{{ title }}</h2>
+    <p class="auth-container__form--warning">{{ warning }}</p>
+    <form [formGroup]="formGroup">
+      <div class="form-inputs">
+        @for (field of formFields;track field ) {
+        <div>
+          <input
+            [formControlName]="field.name"
+            [id]="field.name"
+            [type]="field.type"
+            [placeholder]="field.placeholder"
+            [ngClass]="{
+              'error-border':
+                formGroup.get(field.name)?.invalid &&
+                (formGroup.get(field.name)?.touched ||
+                  formGroup.get(field.name)?.dirty)
+            }"
+          />
+          @if (formGroup.get(field.name)?.invalid &&
+          formGroup.get(field.name)?.touched) {
+          <div class="form-inputs__error">
+            {{ getErrorMessage(field.name) }}
+          </div>
+          }
+        </div>
+        }
+      </div>
+      <div class="form-buttons">
+        @for (button of buttons; track button) {
+        <button [type]="button.type" [ngClass]="button.cssClass">
+          @if (button.imgSrc) {
+          <ng-container>
+            <img [src]="button.imgSrc" alt="Icon" class="btn-icon" />
+          </ng-container>
+        }
+          {{ button.text }}
+        </button>
+        }
+      </div>
+    </form>
+    <ng-content></ng-content>
+  </div>
+</div>
