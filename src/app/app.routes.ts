@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { BrowseComponent } from './pages/browse/browse.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -11,6 +12,7 @@ export const routes: Routes = [
   },
   {
     path: 'browse',
+    canActivate:[authGuard],
     component: BrowseComponent,
   },
   { path: '**', redirectTo: 'auth' },
