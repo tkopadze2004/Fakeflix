@@ -6,11 +6,13 @@ import {
 import { tap } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { StorageService } from '../core/services/storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthFacade {
   private readonly authService = inject(AuthService);
-  storageService = inject(StorageService);
+  private readonly storageService = inject(StorageService);
+  private router = inject(Router);
 
   get isAuthenticated(): boolean {
     return !!this.token;
@@ -18,14 +20,6 @@ export class AuthFacade {
 
   get token(): string {
     return this.storageService.getItem('token');
-  }
-
-  get refreshToken() {
-    return this.storageService.getItem('refreshToken');
-  }
-
-  get user() {
-    return this.storageService.getItem('user');
   }
 
   register(registerPayload: RegisterPayload) {
@@ -51,5 +45,10 @@ export class AuthFacade {
         });
       })
     );
+  }
+
+  logout() {
+    this.storageService.clear();
+    this.router.navigate(['/']);
   }
 }

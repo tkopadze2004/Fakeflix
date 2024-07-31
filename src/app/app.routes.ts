@@ -12,8 +12,8 @@ export const routes: Routes = [
   },
   {
     path: 'browse',
-    canActivate:[authGuard],
     component: BrowseComponent,
+    canActivate: [authGuard],
   },
   { path: '**', redirectTo: 'auth' },
 ];
