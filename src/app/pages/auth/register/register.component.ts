@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   AbstractControlOptions,
   FormBuilder,
@@ -20,6 +20,7 @@ import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
   imports: [NgClass, ReactiveFormsModule, RouterLink, AuthFormComponent],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegisterComponent {
   private readonly authFacade = inject(AuthFacade);

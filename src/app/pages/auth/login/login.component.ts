@@ -1,10 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component';
 import { LoginPayload } from '../../../core/interfaces/auth.interface';
 import { AuthFacade } from '../../../facades/auth.facade';
 import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
+import { loginButtons, loginFormFields } from '../../../core/utils/login.utils';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
   imports: [RouterLink, AuthFormComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   private readonly authFacade = inject(AuthFacade);
@@ -20,33 +22,9 @@ export class LoginComponent {
   private sub$ = new Subject();
   public errorMessage: string | null = null;
   public successMessagge: string | null = null;
-  formFields = [
-    { name: 'email', type: 'email', placeholder: 'E-mail' },
-    { name: 'password', type: 'password', placeholder: 'Password' },
-  ];
-  buttons = [
-    {
-      text: 'Sign in',
-      type: 'submit',
-      cssClass: 'btn btn-primary',
-      submit: true,
-    },
-    {
-      text: 'Sign in with Google',
-      type: 'button',
-      cssClass: 'btn btn-google',
-      imgSrc: '/images/google.png',
-      submit: false,
-    },
-    {
-      text: 'Sign in anonymously',
-      type: 'button',
-      cssClass: 'btn btn-anonymous',
-      submit: false,
-    },
-  ];
-
-  constructor(private fb: FormBuilder) {}
+  public formFields = loginFormFields;
+  public buttons = loginButtons;
+  private fb = inject(FormBuilder);
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({

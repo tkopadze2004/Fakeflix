@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from '../alert/alert.component';
 import { Button } from '../../core/interfaces/buttons.interface';
@@ -10,6 +10,7 @@ import { Button } from '../../core/interfaces/buttons.interface';
   imports: [ReactiveFormsModule, NgClass, AlertComponent],
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.scss',
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class AuthFormComponent {
   @Input() formGroup!: FormGroup;
