@@ -88,7 +88,7 @@ export class LoginComponent {
         delay(2000)
       )
       .subscribe(() => {
-        this.router.navigate(['/main']);
+        this.router.navigate(['/browse']);
       });
   }
   ngOnDestroy(): void {
