@@ -11,17 +11,17 @@ import { Injectable } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 export class AuthService extends ApiService {
   private readonly firebaseApiKey = environment.firebaseApiKey;
-  private readonly endpoint =
-    'https://identitytoolkit.googleapis.com/v1/accounts:';
+  private readonly firebaseAuthUrl = environment.firebaseAuthUrl;
+
   register(params: RegisterPayload): Observable<AuthResponse> {
     return this.post<AuthResponse>(
-      `${this.endpoint}signUp?key=${this.firebaseApiKey}`,
+      `${this.firebaseAuthUrl}signUp?key=${this.firebaseApiKey}`,
       params
     );
   }
   login(params: LoginPayload): Observable<AuthResponse> {
     return this.post<AuthResponse>(
-      `${this.endpoint}signInWithPassword?key=${this.firebaseApiKey}`,
+      `${this.firebaseAuthUrl}signInWithPassword?key=${this.firebaseApiKey}`,
       { ...params, returnSecureToken: true }
     );
   }
