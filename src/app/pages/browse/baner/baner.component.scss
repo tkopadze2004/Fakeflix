@@ -1,0 +1,78 @@
+:host {
+  font-family: Inter, sans-serif;
+
+  .banner {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    padding: 10px 60px;
+    align-items: center;
+    justify-content: flex-start;
+    background-size: cover;
+    background-position: center;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: 1;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    &__content {
+      width: 500px;
+      z-index: 2;
+
+      h1 {
+        font-size: 50px;
+        color: white;
+        font-weight: 800;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+      }
+
+      p {
+        font-size: 18px;
+        margin: 20px 0;
+        line-height: 28px;
+        color: rgb(249, 249, 249);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+      }
+    }
+
+    .info {
+      background-color: rgba(128, 128, 128, 0.5);
+    }
+
+    .play {
+      background-color: #e50914;
+      &:hover {
+        background-color: #f40612;
+      }
+    }
+
+    button {
+      border-radius: 5px;
+      margin: 0 20px 0 0;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: 500;
+      width: 140px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    img {
+      width: 15px;
+      margin: 5px 10px 0 0;
+    }
+  }
+}

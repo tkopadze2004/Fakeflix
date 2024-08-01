@@ -1,0 +1,18 @@
+@if (currentBannerMovie$ | async ;as movie) {
+  <div
+    class="banner"
+    [style.background-image]="'url(https://image.tmdb.org/t/p/original' + movie.backdrop_path + ')'">
+    <div class="banner__content">
+      <h1>{{ movie.name }}</h1>
+      <button class="play">
+        <img src="/images/play.png">
+        <span>Play</span>
+      </button>
+      <button class="info">
+        <img src="/images/info.png">
+        <span>More Info</span>
+      </button>
+      <p>{{ movie.overview }}</p>
+    </div>
+  </div>
+}

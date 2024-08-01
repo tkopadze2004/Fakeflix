@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<app-baner></app-baner>
 <div *ngIf="getTrendingMovies$ | async as trendingMovies">
   <div *ngFor="let item of trendingMovies.results">
     {{ item.title }}
