@@ -1,0 +1,21 @@
+<nav #nav>
+  <div class="left">
+    <div class="left__logo"><img src="/images/logo.png" /></div>
+    <ul>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/tv-series">TV Series</a></li>
+      <li><a routerLink="/movies">Movies</a></li>
+      <li><a routerLink="/new-popular">New & Popular</a></li>
+      <li><a routerLink="/my-list">My List</a></li>
+    </ul>
+  </div>
+  <div class="right" #logout (click)="toggleLogoutMenu()">
+    <img src="/images/logout-icon.png" />
+    <img src="/images/arrow.png" class="right__arrow" />
+  </div>
+  @if (showLogoutMenu) {
+  <div class="logout-menu">
+    <button (click)="logoutFromBrowse()">Logout</button>
+  </div>
+  }
+</nav>

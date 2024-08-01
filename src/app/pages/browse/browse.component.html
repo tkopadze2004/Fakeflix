@@ -1,1 +1,16 @@
-<p>browse works!</p>
+<app-navbar></app-navbar>
+<div *ngIf="getTrendingMovies$ | async as trendingMovies">
+  <div *ngFor="let item of trendingMovies.results">
+    {{ item.title }}
+  </div>
+</div>
+<div *ngIf="getTrendingMovies$ | async as trendingMovies">
+  <div *ngFor="let item of trendingMovies.results">
+    {{ item.title }}
+  </div>
+</div>
+<div *ngIf="getTrendingMovies$ | async as trendingMovies">
+  <div *ngFor="let item of trendingMovies.results">
+    {{ item.title }}
+  </div>
+</div>
