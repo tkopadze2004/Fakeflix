@@ -1,0 +1,30 @@
+<h1>{{ section }}</h1>
+<div class="scroll-wrapper" [ngClass]="{ expanded: isExpanded }">
+  <button class="scroll-button left" (click)="scrollLeft()">
+    <img src="/images/left-arrow.png" class="arrow" />
+  </button>
+  <div class="scroll-container" #scrollContainer>
+    <ul class="movie-list">
+      @for(movie of  movies ; track movie){
+      <li class="movie-item">
+        <div class="image-container">
+          <img [src]="getImageUrl(movie.backdrop_path)" [alt]="movie.title" />
+          <div class="hover-overlay">
+            <div class="hover-info">
+              <div class="actions">
+                <img src="/images/play-button.png" />
+                <img src="/images/plus.png" />
+                <img src="/images/chevron.png" />
+              </div>
+              <h4>{{ movie.title }}</h4>
+            </div>
+          </div>
+        </div>
+      </li>
+    }
+    </ul>
+  </div>
+  <button class="scroll-button right" (click)="scrollRight()">
+    <img src="/images/right-arrow.png" class="arrow" />
+  </button>
+</div>
