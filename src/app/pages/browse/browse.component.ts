@@ -6,6 +6,7 @@ import { TopRatedComponent } from './top-rated/top-rated.component';
 import { TrendingComponent } from './trending/trending.component';
 import { OriginalsComponent } from './originals/originals.component';
 import { ActionComponent } from './action/action.component';
+import { RomanceComponent } from "./romance/romance.component";
 
 @Component({
   selector: 'app-browse',
@@ -18,7 +19,8 @@ import { ActionComponent } from './action/action.component';
     TrendingComponent,
     OriginalsComponent,
     ActionComponent,
-  ],
+    RomanceComponent
+],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
