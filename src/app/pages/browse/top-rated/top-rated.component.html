@@ -1,5 +1,5 @@
-@if (topRated$ | async ; as trendingMovies) {
+@if (topRated$ | async ; as topMovies) {
 <div>
-  <app-movie-carousel section="Top Rated on Fakeflix"  [movies]="trendingMovies.results"></app-movie-carousel>
+  <app-movie-carousel section="Top Rated on Fakeflix"  [movies]="topMovies.results"></app-movie-carousel>
 </div>
 }
