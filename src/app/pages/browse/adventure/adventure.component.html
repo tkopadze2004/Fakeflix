@@ -1,0 +1,5 @@
+@if (adventure$ | async ; as adventureMovies) {
+  <div>
+    <app-movie-carousel section="Adventure Movies"  [movies]="adventureMovies.results"/>
+  </div>
+  }

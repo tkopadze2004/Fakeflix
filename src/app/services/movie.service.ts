@@ -20,15 +20,18 @@ export class MovieService extends ApiService {
   getUpcomingMovies(): Observable<MovieResponse> {
     return this.get('/movie/upcoming', { language: 'en-US' });
   }
+  ////
   getNetflixTVShows(): Observable<MovieResponse> {
     return this.get('/discover/tv', { with_networks: 213, sort_by: 'popularity.desc', language: 'en-US' });
   }
   getAdventureMovies():Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: 12, sort_by: 'popularity.desc', language: 'en-US' });
-  }
+  } /////
+
   getComedyMovies(): Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: 35, sort_by: 'popularity.desc', language: 'en-US' });
-  }
+  } /////
+
 
   getHorrorMovies(): Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: 27, sort_by: 'popularity.desc', language: 'en-US' });
@@ -40,5 +43,5 @@ export class MovieService extends ApiService {
 
   getAnimatedMovies(): Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: 16, sort_by: 'popularity.desc', language: 'en-US' });
-  }
+  } ////
 }

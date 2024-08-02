@@ -7,6 +7,8 @@ import { TrendingComponent } from './trending/trending.component';
 import { OriginalsComponent } from './originals/originals.component';
 import { ActionComponent } from './action/action.component';
 import { RomanceComponent } from "./romance/romance.component";
+import { HorrorComponent } from "./horror/horror.component";
+import { AdventureComponent } from "./adventure/adventure.component";
 
 @Component({
   selector: 'app-browse',
@@ -19,7 +21,9 @@ import { RomanceComponent } from "./romance/romance.component";
     TrendingComponent,
     OriginalsComponent,
     ActionComponent,
-    RomanceComponent
+    RomanceComponent,
+    HorrorComponent,
+    AdventureComponent
 ],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',

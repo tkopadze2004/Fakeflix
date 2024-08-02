@@ -1,5 +1,5 @@
-@if (movies$ | async ; as trendingMovies) {
+@if (movies$ | async ; as actionMovies) {
   <div>
-    <app-movie-carousel section="Action Movies"  [movies]="trendingMovies.results"/>
+    <app-movie-carousel section="Action Movies"  [movies]="actionMovies.results"/>
   </div>
   }
