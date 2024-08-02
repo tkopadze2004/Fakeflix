@@ -10,6 +10,8 @@ import { RomanceComponent } from "./romance/romance.component";
 import { HorrorComponent } from "./horror/horror.component";
 import { AdventureComponent } from "./adventure/adventure.component";
 import { AnimatedComponent } from "./animated/animated.component";
+import { ComedyComponent } from "./comedy/comedy.component";
+import { UpcomingComponent } from "./upcoming/upcoming.component";
 
 @Component({
   selector: 'app-browse',
@@ -25,7 +27,9 @@ import { AnimatedComponent } from "./animated/animated.component";
     RomanceComponent,
     HorrorComponent,
     AdventureComponent,
-    AnimatedComponent
+    AnimatedComponent,
+    ComedyComponent,
+    UpcomingComponent
 ],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',

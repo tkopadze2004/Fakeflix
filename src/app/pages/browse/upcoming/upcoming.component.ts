@@ -4,14 +4,14 @@ import { AsyncPipe } from '@angular/common';
 import { MovieCarouselComponent } from "../../../shared/movie-carousel/movie-carousel.component";
 
 @Component({
-  selector: 'app-animated',
+  selector: 'app-upcoming',
   standalone: true,
   imports: [AsyncPipe, MovieCarouselComponent],
-  templateUrl: './animated.component.html',
-  styleUrl: './animated.component.scss',
+  templateUrl: './upcoming.component.html',
+  styleUrl: './upcoming.component.scss',
   changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class AnimatedComponent {
-private readonly movieService = inject(MovieService);
-public animated$ = this.movieService.getAnimatedMovies();
+export class UpcomingComponent {
+  private readonly movieService = inject(MovieService);
+  public upcoming$ = this.movieService.getUpcomingMovies();
 }

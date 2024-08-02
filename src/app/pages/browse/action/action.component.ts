@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MovieService } from '../../../services/movie.service';
 import { AsyncPipe } from '@angular/common';
 import { MovieCarouselComponent } from '../../../shared/movie-carousel/movie-carousel.component';
@@ -9,8 +9,9 @@ import { MovieCarouselComponent } from '../../../shared/movie-carousel/movie-car
   imports: [AsyncPipe, MovieCarouselComponent],
   templateUrl: './action.component.html',
   styleUrl: './action.component.scss',
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class ActionComponent {
   private readonly movieService = inject(MovieService);
-  public movies$ = this.movieService.getActionMovies(27);
+  public movies$ = this.movieService.getActionMovies();
 }
