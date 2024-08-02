@@ -1,5 +1,6 @@
 :host {
   font-family: Inter, sans-serif;
+
   .scroll-wrapper {
     padding-left: 60px;
     width: 97%;
@@ -7,6 +8,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+
     &:hover {
       .scroll-button {
         opacity: 1;
@@ -36,6 +38,7 @@
     gap: 10px;
     list-style: none;
     padding: 0;
+
     &:hover {
       .movie-item:not(:hover) {
         filter: brightness(0.5);
@@ -56,6 +59,7 @@
         cursor: pointer;
         transform: scale(1.15);
         z-index: 2;
+
         .hover-overlay {
           opacity: 1;
         }
@@ -137,4 +141,64 @@
       width: 20px;
     }
   }
+
+  .movie-info-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+
+    .movie-info-content {
+      background: #1c1c1c;
+      // padding: 30px;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 770px;
+      color: white;
+      position: relative;
+      text-align: center;
+
+      .close-button {
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 15px;
+        border-radius: 50%;
+        right: 8px;
+        // background: none;
+        border: none;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      .movie-details {
+        text-align: left;
+        p {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+
 }

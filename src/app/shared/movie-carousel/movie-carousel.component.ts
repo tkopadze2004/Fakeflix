@@ -9,13 +9,13 @@ import {
   ChangeDetectionStrategy,
   inject,
 } from '@angular/core';
-import { NgClass, NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Movie } from '../../core/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-carousel',
   standalone: true,
-  imports: [NgClass, NgFor],
+  imports: [NgClass, NgFor,NgIf],
   templateUrl: './movie-carousel.component.html',
   styleUrls: ['./movie-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -24,6 +24,7 @@ export class MovieCarouselComponent implements AfterViewInit {
   private renderer = inject(Renderer2);
   private cdr = inject(ChangeDetectorRef);
   public isExpanded: boolean = false;
+  public selectedMovie: Movie | null = null;
 
   @Input() movies: Movie[] = [];
   @Input() section!: string;
@@ -93,7 +94,19 @@ export class MovieCarouselComponent implements AfterViewInit {
   getImageUrl(backdropPath: string): string {
     return `${this.imageBaseUrl}${backdropPath}`;
   }
+
   getTitleOrName(movie: Movie): string {
     return movie.title || movie.name || 'Unknown Title';
   }
+
+  showMovieInfo(movie: Movie): void {
+    this.selectedMovie = movie;
+    this.cdr.detectChanges();
+  }
+
+  closeMovieInfo(): void {
+    this.selectedMovie = null;
+    this.cdr.detectChanges();
+  }
+
 }
