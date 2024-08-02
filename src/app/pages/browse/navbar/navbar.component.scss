@@ -83,3 +83,33 @@ img {
     transition: color 0.3s ease;
   }
 }
+@media (max-width: 768px) {
+  nav {
+    padding: 9px 40px;
+
+    .left {
+      flex-direction: column;
+      align-items: flex-start;
+
+      ul {
+        display: none;
+      }
+    }
+
+    .right {
+      .right__arrow {
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .left__logo img {
+    max-width: 120px;
+  }
+
+  .right img {
+    max-width: 30px;
+  }
+}
