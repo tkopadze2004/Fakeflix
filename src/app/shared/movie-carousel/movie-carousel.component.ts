@@ -9,18 +9,18 @@ import {
   ChangeDetectionStrategy,
   inject,
 } from '@angular/core';
-import { NgClass } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 import { Movie } from '../../core/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-carousel',
   standalone: true,
-  imports: [NgClass],
+  imports: [NgClass, NgFor],
   templateUrl: './movie-carousel.component.html',
   styleUrls: ['./movie-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MovieCarouselComponent implements  AfterViewInit {
+export class MovieCarouselComponent implements AfterViewInit {
   private renderer = inject(Renderer2);
   private cdr = inject(ChangeDetectorRef);
   public isExpanded: boolean = false;
@@ -32,7 +32,6 @@ export class MovieCarouselComponent implements  AfterViewInit {
   @Input() imageBaseUrl: string = 'https://image.tmdb.org/t/p/w780/';
 
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
-
 
   ngAfterViewInit(): void {
     const scrollContainerEl = this.scrollContainer.nativeElement;
@@ -93,5 +92,8 @@ export class MovieCarouselComponent implements  AfterViewInit {
 
   getImageUrl(backdropPath: string): string {
     return `${this.imageBaseUrl}${backdropPath}`;
+  }
+  getTitleOrName(movie: Movie): string {
+    return movie.title || movie.name || 'Unknown Title';
   }
 }

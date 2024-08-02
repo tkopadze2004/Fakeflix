@@ -4,15 +4,15 @@ import { MovieCarouselComponent } from "../../../shared/movie-carousel/movie-car
 import { AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-trending',
+  selector: 'app-originals',
   standalone: true,
   imports: [MovieCarouselComponent,AsyncPipe],
-  templateUrl: './trending.component.html',
-  styleUrl: './trending.component.scss',
+  templateUrl: './originals.component.html',
+  styleUrl: './originals.component.scss',
   changeDetection:ChangeDetectionStrategy.OnPush
 })
-export class TrendingComponent {
+export class OriginalsComponent {
   private readonly movieService = inject(MovieService);
 
-  public trending$ = this.movieService.getTrendingMovies();
+  public originals$ = this.movieService.getNetflixTVShows();
 }
