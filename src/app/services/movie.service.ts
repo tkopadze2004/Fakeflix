@@ -23,7 +23,7 @@ export class MovieService extends ApiService {
   getNetflixTVShows(): Observable<MovieResponse> {
     return this.get('/discover/tv', { with_networks: 213, sort_by: 'popularity.desc', language: 'en-US' });
   }
-  getAdventureMovies(): Observable<MovieResponse> {
+  getAdventureMovies():Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: 12, sort_by: 'popularity.desc', language: 'en-US' });
   }
   getComedyMovies(): Observable<MovieResponse> {

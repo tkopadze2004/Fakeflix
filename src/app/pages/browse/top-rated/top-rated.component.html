@@ -1,0 +1,5 @@
+@if (topRated$ | async ; as trendingMovies) {
+<div>
+  <app-movie-carousel section="Top Rated on Fakeflix"  [movies]="trendingMovies.results"></app-movie-carousel>
+</div>
+}
