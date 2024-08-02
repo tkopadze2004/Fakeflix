@@ -13,7 +13,7 @@ export class MovieService extends ApiService {
     return this.get('/movie/top_rated', { region: 'US', sort_by: 'popularity.desc' });
   }
 
-  getMoviesByGenre(genreId: number): Observable<MovieResponse> {
+  getActionMovies(genreId: number): Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: genreId, sort_by: 'popularity.desc', language: 'en-US' });
   }
 

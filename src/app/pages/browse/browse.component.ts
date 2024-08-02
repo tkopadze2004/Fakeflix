@@ -5,6 +5,7 @@ import { BanerComponent } from './baner/baner.component';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 import { TrendingComponent } from './trending/trending.component';
 import { OriginalsComponent } from './originals/originals.component';
+import { ActionComponent } from './action/action.component';
 
 @Component({
   selector: 'app-browse',
@@ -16,6 +17,7 @@ import { OriginalsComponent } from './originals/originals.component';
     TopRatedComponent,
     TrendingComponent,
     OriginalsComponent,
+    ActionComponent,
   ],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
