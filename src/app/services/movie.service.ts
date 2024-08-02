@@ -26,7 +26,7 @@ export class MovieService extends ApiService {
   }
   getAdventureMovies():Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: 12, sort_by: 'popularity.desc', language: 'en-US' });
-  } /////
+  } 
 
   getComedyMovies(): Observable<MovieResponse> {
     return this.get('/discover/movie', { with_genres: 35, sort_by: 'popularity.desc', language: 'en-US' });

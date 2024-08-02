@@ -9,6 +9,7 @@ import { ActionComponent } from './action/action.component';
 import { RomanceComponent } from "./romance/romance.component";
 import { HorrorComponent } from "./horror/horror.component";
 import { AdventureComponent } from "./adventure/adventure.component";
+import { AnimatedComponent } from "./animated/animated.component";
 
 @Component({
   selector: 'app-browse',
@@ -23,7 +24,8 @@ import { AdventureComponent } from "./adventure/adventure.component";
     ActionComponent,
     RomanceComponent,
     HorrorComponent,
-    AdventureComponent
+    AdventureComponent,
+    AnimatedComponent
 ],
   templateUrl: './browse.component.html',
   styleUrl: './browse.component.scss',
