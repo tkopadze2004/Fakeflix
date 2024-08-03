@@ -5,7 +5,7 @@
   </button>
   <div class="scroll-container" #scrollContainer>
     <ul class="movie-list">
-      <li class="movie-item" *ngFor="let movie of movies; " (click)="showMovieInfo(movie)">
+      <li class="movie-item" *ngFor="let movie of movies" (click)="showMovieInfo(movie)">
         <div class="image-container">
           <img [src]="getImageUrl(movie.backdrop_path)" [alt]="movie.title" />
           <div class="hover-overlay">
@@ -29,17 +29,18 @@
 
 <div class="movie-info-overlay" *ngIf="selectedMovie">
   <div class="movie-info-content">
-    <button class="close-button" (click)="closeMovieInfo()">×</button>
-    <img [src]="getImageUrl(selectedMovie.backdrop_path)" alt="{{ selectedMovie.title }}"/>
-    <h2>{{ selectedMovie.title }}</h2>
-    <p>{{ selectedMovie.overview }}</p>
+    <div class="header">
+      <button class="close-button" (click)="closeMovieInfo()">x</button>
+    </div>
+    <img class="overlay-image" [src]="getImageUrl(selectedMovie.backdrop_path)" alt="{{ selectedMovie.title }}" />
+    <h3>{{ getTitleOrName(selectedMovie) }}</h3>
+    <p class="overview">{{ selectedMovie.overview }}</p>
     <div class="movie-details">
       <p><strong>Genres:</strong> {{ selectedMovie.genre_ids.join(', ') }}</p>
-      <p><strong>Release date:</strong> {{ selectedMovie.release_date }}</p>
-      <p><strong>Average vote:</strong> {{ selectedMovie.vote_average }}</p>
+      <p><strong>Release date:</strong> {{ selectedMovie.release_date | date: 'yyyy' }}</p>
+      <p><strong>Average vote:</strong> {{ selectedMovie.vote_average | number: '1.1-1' }}</p>
       <p><strong>Original language:</strong> {{ selectedMovie.original_language }}</p>
       <p><strong>Age classification:</strong> Suitable for all ages</p>
     </div>
   </div>
 </div>
-

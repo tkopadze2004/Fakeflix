@@ -9,13 +9,13 @@ import {
   ChangeDetectionStrategy,
   inject,
 } from '@angular/core';
-import { NgClass, NgFor, NgIf } from '@angular/common';
+import { DatePipe, DecimalPipe, NgClass, NgFor, NgIf } from '@angular/common';
 import { Movie } from '../../core/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-carousel',
   standalone: true,
-  imports: [NgClass, NgFor,NgIf],
+  imports: [NgClass, NgFor,NgIf,DatePipe,DecimalPipe],
   templateUrl: './movie-carousel.component.html',
   styleUrls: ['./movie-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
