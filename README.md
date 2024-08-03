@@ -1,27 +1,76 @@
-# KomokieFakeflix
+# Fakeflix
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+Fakeflix is a standalone web application created with Angular 18, designed to provide an engaging experience for browsing movies. Users can authenticate using Firebase, explore a movie carousel with interactive features, and view detailed movie information in a fully responsive layout.
 
-## Development server
+## Introduction
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Fakeflix is a modern web application built with Angular 18, focusing on delivering a rich and interactive movie browsing experience. The application integrates with Firebase for user authentication and connects to the TMDB API to fetch real-time movie data. It is designed to be fully responsive, providing an optimal user experience across different devices and screen sizes, all while avoiding the use of external UI libraries.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Angular 18**: Utilizes Angular 18 for the latest features and best practices in modern web development.
+- **User Authentication**: Secure login and registration functionalities managed through Firebase Authentication, with forms featuring built-in validation to ensure data accuracy.
+- **Dynamic Banner**: The banner dynamically displays images generated through a random image service, adding visual interest and variability to the user interface.
+- **Movie Carousel**: A horizontally scrolling carousel of movie items with customizable settings for item width and scroll behavior.
+- **Movie Details Overlay**: Clicking on a movie item opens an overlay with detailed information about the selected movie, enhancing user interaction without page navigation.
+- **Responsive Design**: Ensures an optimal viewing experience on both mobile and desktop devices.
+- **Navbar with Logout Icon**: Includes a navbar with an icon for logging out. Clicking this icon triggers a logout overlay where users can confirm their intention to log out.
+- **Real-Time Data Integration**: Connects to the TMDB API to fetch and display up-to-date movie information.
+- **Customizable Carousel**: Offers configurable options for item width, the number of items to scroll at once, and image base URL.
 
-## Build
+## How It Works
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **User Authentication**:
 
-## Running unit tests
+   - Upon initialization, users are presented with a login form. Above the login form, there is a button that uses `routerLink` to navigate to the registration form.
+   - Firebase Authentication manages login and registration, redirecting users to the browse page upon successful login.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. **Dynamic Banner**:
 
-## Running end-to-end tests
+   - The banner on the browse page displays a dynamically generated image from a random image service, adding a unique touch to the user experience.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. **Movie Browsing**:
+
+   - The browse page includes a navbar with a logout icon, a banner, and a horizontally scrolling movie carousel.
+   - Users can scroll through movie items using interactive buttons and view details by clicking on an item.
+
+4. **Movie Details**:
+
+   - Clicking on a movie item reveals an overlay with detailed movie information, enhancing the browsing experience without navigating away from the current page.
+
+5. **Logout**:
+   - The navbar features an icon for logging out. Clicking this icon opens a logout overlay where users can confirm their intention to log out. This ensures a secure and user-friendly way to exit their account, with Firebase managing the session and redirecting to the login page upon confirmation.
+
+## Installation
+
+To set up and run the project locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/username/fakeflix.git
+   ```
+2. **Navigate into the project directory:**
+   ```bash
+   cd fakeflix
+   ```
+3. **Install dependencies:**
+   ```bash
+    npm install
+   ```
+4. **Build the project:**
+   ```bash
+   ng build
+   ```
+5. **Run the development server:**
+
+   ```bash
+    ng serve
+   ```
+
+   Visit http://localhost:4200 in your browser to view the application.
 
 ## Further help
+
+- **TMDB API**: The application connects to the [TMDB API](https://www.themoviedb.org/) to fetch and display up-to-date movie information. Visit their website for more details on the API and available endpoints.
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
