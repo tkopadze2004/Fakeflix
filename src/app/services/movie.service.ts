@@ -5,6 +5,7 @@ import { MovieResponse } from "../core/interfaces/movie.interface";
 
 @Injectable({providedIn:"root"})
 export class MovieService extends ApiService {
+
   getTrendingMovies(): Observable<MovieResponse> {
     return this.get('/trending/movie/week', { language: 'en-US', sort_by: 'popularity.desc' });
   }

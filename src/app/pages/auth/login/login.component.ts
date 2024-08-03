@@ -5,7 +5,7 @@ import { AuthFormComponent } from '../../../shared/auth-form/auth-form.component
 import { LoginPayload } from '../../../core/interfaces/auth.interface';
 import { AuthFacade } from '../../../facades/auth.facade';
 import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
-import { loginButtons, loginFormFields } from '../../../core/utils/login.utils';
+import { loginButtons, loginFormFields } from '../../../core/utils/auth.utils';
 
 @Component({
   selector: 'app-login',

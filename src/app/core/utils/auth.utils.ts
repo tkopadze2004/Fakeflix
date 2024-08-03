@@ -24,3 +24,22 @@ export const loginButtons = [
     submit: false,
   },
 ];
+
+export const registerFormFiels = [
+  { name: 'name', type: 'text', placeholder: 'Your Name' },
+  { name: 'email', type: 'email', placeholder: 'E-mail' },
+  { name: 'password', type: 'password', placeholder: 'Password' },
+  {
+    name: 'confirmPassword',
+    type: 'password',
+    placeholder: 'Repeat your password',
+  },
+];
+export const registerButtons = [
+  {
+    text: 'Sign up',
+    type: 'submit',
+    cssClass: 'btn btn-primary',
+    submit: true,
+  },
+];

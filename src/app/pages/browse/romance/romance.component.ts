@@ -13,6 +13,5 @@ import { AsyncPipe } from '@angular/common';
 })
 export class RomanceComponent {
   private readonly movieService = inject(MovieService);
-
   public romance$ = this.movieService.getRomanceMovies();
 }

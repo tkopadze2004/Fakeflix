@@ -13,6 +13,10 @@ import { passwordMatchValidator } from '../../../core/validators/password.valida
 import { RegisterPayload } from '../../../core/interfaces/auth.interface';
 import { AuthFacade } from '../../../facades/auth.facade';
 import { catchError, delay, Subject, takeUntil, tap, throwError } from 'rxjs';
+import {
+  registerButtons,
+  registerFormFiels,
+} from '../../../core/utils/auth.utils';
 
 @Component({
   selector: 'app-register',
@@ -29,27 +33,10 @@ export class RegisterComponent {
   public errorMessage: string | null = null;
   public successMessagge: string | null = null;
   public registerForm!: FormGroup;
+  private fb = inject(FormBuilder);
+  public formFields = registerFormFiels;
+  public buttons = registerButtons;
 
-  public formFields = [
-    { name: 'name', type: 'text', placeholder: 'Your Name' },
-    { name: 'email', type: 'email', placeholder: 'E-mail' },
-    { name: 'password', type: 'password', placeholder: 'Password' },
-    {
-      name: 'confirmPassword',
-      type: 'password',
-      placeholder: 'Repeat your password',
-    },
-  ];
-  public buttons = [
-    {
-      text: 'Sign up',
-      type: 'submit',
-      cssClass: 'btn btn-primary',
-      submit: true,
-    },
-  ];
-
-  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group(

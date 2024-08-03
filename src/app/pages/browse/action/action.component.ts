@@ -13,5 +13,5 @@ import { MovieCarouselComponent } from '../../../shared/movie-carousel/movie-car
 })
 export class ActionComponent {
   private readonly movieService = inject(MovieService);
-  public movies$ = this.movieService.getActionMovies();
+  public actionMovies$ = this.movieService.getActionMovies();
 }

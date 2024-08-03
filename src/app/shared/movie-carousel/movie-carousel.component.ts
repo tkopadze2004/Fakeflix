@@ -10,13 +10,13 @@ import {
   HostListener,
   inject,
 } from '@angular/core';
-import { DatePipe, DecimalPipe, NgClass} from '@angular/common';
+import { DatePipe, DecimalPipe, NgClass, UpperCasePipe} from '@angular/common';
 import { Movie } from '../../core/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-carousel',
   standalone: true,
-  imports: [NgClass, DatePipe, DecimalPipe],
+  imports: [NgClass, DatePipe, DecimalPipe,UpperCasePipe],
   templateUrl: './movie-carousel.component.html',
   styleUrls: ['./movie-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -73,14 +73,12 @@ export class MovieCarouselComponent implements AfterViewInit {
   }
 
   private scroll(direction: 'left' | 'right'): void {
-    const scrollAmount = this.itemWidth * this.itemsToScroll;
+    const scrollAmount = this.itemWidth * this.itemsToScroll ;
     const scrollContainerEl = this.scrollContainer.nativeElement;
     const currentScrollLeft = scrollContainerEl.scrollLeft;
 
     let newScrollLeft =
-      direction === 'left'
-        ? currentScrollLeft - scrollAmount
-        : currentScrollLeft + scrollAmount;
+      direction === 'left' ? currentScrollLeft - scrollAmount : currentScrollLeft + scrollAmount;
 
     newScrollLeft = Math.max(
       0,
@@ -120,11 +118,9 @@ export class MovieCarouselComponent implements AfterViewInit {
 
   showMovieInfo(movie: Movie): void {
     this.selectedMovie = movie;
-    this.cdr.detectChanges();
   }
 
   closeMovieInfo(): void {
     this.selectedMovie = null;
-    this.cdr.detectChanges();
   }
 }

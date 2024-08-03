@@ -13,6 +13,5 @@ import { AsyncPipe } from '@angular/common';
 })
 export class TrendingComponent {
   private readonly movieService = inject(MovieService);
-
   public trending$ = this.movieService.getTrendingMovies();
 }

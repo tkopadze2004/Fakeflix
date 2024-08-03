@@ -5,9 +5,9 @@ import { environment } from '../../../environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
-  private tmdbApiKey = environment.tmdbApiKey;
-  private apiUrl = environment.tmdbApiUrl;
-  private http: HttpClient = inject(HttpClient);
+  private readonly tmdbApiKey = environment.tmdbApiKey;
+  private  readonly apiUrl = environment.tmdbApiUrl;
+  private readonly http: HttpClient = inject(HttpClient);
 
   get<T>(path: string, params?: { [key: string]: string | number }): Observable<T> {
     const httpparams = new HttpParams({

@@ -10,9 +10,9 @@ export class BanerFacade {
 
   fetchNewBannerMovie(): Observable<Movie> {
     return this.movieService.getNetflixTVShows().pipe(
-      map((response) => {
-        const randomIndex = Math.floor(Math.random() * response.results.length);
-        return response.results[randomIndex];
+      map((res) => {
+        const randomIndex = Math.floor(Math.random() * res.results.length);
+        return res.results[randomIndex];
       })
     );
   }
