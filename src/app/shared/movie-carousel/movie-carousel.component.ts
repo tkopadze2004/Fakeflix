@@ -7,15 +7,16 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   ChangeDetectionStrategy,
+  HostListener,
   inject,
 } from '@angular/core';
-import { DatePipe, DecimalPipe, NgClass, NgFor, NgIf } from '@angular/common';
+import { DatePipe, DecimalPipe, NgClass} from '@angular/common';
 import { Movie } from '../../core/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movie-carousel',
   standalone: true,
-  imports: [NgClass, NgFor,NgIf,DatePipe,DecimalPipe],
+  imports: [NgClass, DatePipe, DecimalPipe],
   templateUrl: './movie-carousel.component.html',
   styleUrls: ['./movie-carousel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,6 +36,7 @@ export class MovieCarouselComponent implements AfterViewInit {
   @ViewChild('scrollContainer') scrollContainer!: ElementRef;
 
   ngAfterViewInit(): void {
+    this.adjustItemsToScroll();
     const scrollContainerEl = this.scrollContainer.nativeElement;
     if (scrollContainerEl) {
       this.renderer.listen(scrollContainerEl, 'scroll', () => {
@@ -43,6 +45,23 @@ export class MovieCarouselComponent implements AfterViewInit {
         this.cdr.detectChanges();
       });
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.adjustItemsToScroll();
+  }
+
+  private adjustItemsToScroll(): void {
+    const viewportWidth = window.innerWidth;
+    if (viewportWidth < 600) {
+      this.itemsToScroll = 1;
+    } else if (viewportWidth < 900) {
+      this.itemsToScroll = 2;
+    } else {
+      this.itemsToScroll = 5;
+    }
+    this.cdr.detectChanges();
   }
 
   scrollLeft(): void {
@@ -108,5 +127,4 @@ export class MovieCarouselComponent implements AfterViewInit {
     this.selectedMovie = null;
     this.cdr.detectChanges();
   }
-
 }
