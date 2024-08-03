@@ -28,7 +28,7 @@ Fakeflix is a modern web application built with Angular 18, focusing on deliveri
 
 2. **Dynamic Banner**:
 
--Dynamic Banner: The banner on the browse page displays an image fetched from the getNetflixTVShows endpoint. This endpoint provides a random image related to Netflix TV shows, adding visual interest and variability to the user interface.
+   -Dynamic Banner: The banner on the browse page displays an image fetched from the getNetflixTVShows endpoint. This endpoint provides a random image related to Netflix TV shows, adding visual interest and variability to the user interface.
 
 3. **Movie Browsing**:
 
