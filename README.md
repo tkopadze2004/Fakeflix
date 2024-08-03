@@ -9,12 +9,13 @@ Fakeflix is a modern web application built with Angular 18, focusing on deliveri
 ## Features
 
 - **Angular 18**: Utilizes Angular 18 for the latest features and best practices in modern web development.
-- **User Authentication**: Secure login and registration functionalities managed through Firebase Authentication, with forms featuring built-in validation to ensure data accuracy.
+- **User Authentication**: Secure login and registration functionalities managed through Firebase Authentication. Forms feature built-in validation (e.g., required fields, email format) as well as custom validators. Notably, a custom validator ensures password and confirmation password fields match, enhanscing the user registration experience and maintaining data integrity.
 - **Dynamic Banner**: The banner dynamically displays images generated through a random image service, adding visual interest and variability to the user interface.
 - **Movie Carousel**: A horizontally scrolling carousel of movie items with customizable settings for item width and scroll behavior.
 - **Movie Details Overlay**: Clicking on a movie item opens an overlay with detailed information about the selected movie, enhancing user interaction without page navigation.
 - **Responsive Design**: Ensures an optimal viewing experience on both mobile and desktop devices.
-- **Navbar with Logout Icon**: Includes a navbar with an icon for logging out. Clicking this icon triggers a logout overlay where users can confirm their intention to log out.
+- **Navbar with Logout feature**: Includes a navbar with an icon for logging out. Clicking this icon triggers a logout overlay where users can confirm their intention to log out.
+- **Route Guard**: Implements a route guard on the browse page to ensure that only authenticated users can access it, redirecting unauthenticated users to the login page.
 - **Real-Time Data Integration**: Connects to the TMDB API to fetch and display up-to-date movie information.
 - **Customizable Carousel**: Offers configurable options for item width, the number of items to scroll at once, and image base URL.
 
@@ -22,12 +23,12 @@ Fakeflix is a modern web application built with Angular 18, focusing on deliveri
 
 1. **User Authentication**:
 
-   - Upon initialization, users are presented with a login form. Above the login form, there is a button that uses `routerLink` to navigate to the registration form.
+   - Upon initialization, users are presented with a login form. Below the login form, there is a button that uses `routerLink` to navigate to the registration form.
    - Firebase Authentication manages login and registration, redirecting users to the browse page upon successful login.
 
 2. **Dynamic Banner**:
 
-   - The banner on the browse page displays a dynamically generated image from a random image service, adding a unique touch to the user experience.
+-Dynamic Banner: The banner on the browse page displays an image fetched from the getNetflixTVShows endpoint. This endpoint provides a random image related to Netflix TV shows, adding visual interest and variability to the user interface.
 
 3. **Movie Browsing**:
 
@@ -50,8 +51,11 @@ To set up and run the project locally:
    git clone https://github.com/tkopadze2004/Komokie-Task-Fakeflix
    ```
 2. **Navigate into the project directory:**
+
    ```bash
    cd Komokie-Task-Fakeflix
+
+   ```
 
 3. **Install dependencies:**
    ```bash
