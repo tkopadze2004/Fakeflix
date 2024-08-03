@@ -1,5 +1,4 @@
 $primary-color: #e50914;
-$google-color: #1356c7;
 
 .auth-container {
   display: flex;
@@ -17,9 +16,13 @@ $google-color: #1356c7;
     box-sizing: border-box;
     animation: slideUp 0.7s ease-out;
 
-    @media (max-width: 768px), (max-width: 480px) {
+    @media (max-width: 768px) {
       padding: 15px 40px;
-      max-width: 65%;
+      max-width: 70%;
+    }
+
+    @media (max-width: 600px) {
+      max-width: 90%;
     }
 
     &--title {
@@ -112,29 +115,13 @@ form {
       }
 
       &-google {
-        background: $google-color;
-        color: #fff;
-
+        background: transparent;
+        color: #d9d9d9;
+        border: 1px solid #d9d9d9;
+        opacity: 0.6;
         img {
           width: 19px;
           margin-right: 9px;
-        }
-
-        &:hover {
-          border: 1px solid #d9d9d9;
-          color: #d9d9d9;
-          background: transparent;
-        }
-      }
-
-      &-anonymous {
-        background: transparent;
-        border: 1px solid #d9d9d9;
-        color: #d9d9d9;
-
-        &:hover {
-          color: $primary-color;
-          border: 1px solid $primary-color;
         }
       }
     }

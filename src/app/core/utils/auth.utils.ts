@@ -17,12 +17,6 @@ export const loginButtons = [
     imgSrc: '/images/google.png',
     submit: false,
   },
-  {
-    text: 'Sign in anonymously',
-    type: 'button',
-    cssClass: 'btn btn-anonymous',
-    submit: false,
-  },
 ];
 
 export const registerFormFiels = [
