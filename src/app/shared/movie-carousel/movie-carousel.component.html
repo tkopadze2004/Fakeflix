@@ -30,33 +30,35 @@
 </div>
 
 @if (selectedMovie) {
-<div class="movie-info-overlay">
-  <div class="movie-info-content">
-    <div class="header">
-      <button class="close-button" (click)="closeMovieInfo()">x</button>
-    </div>
-    <img
-      class="overlay-image"
-      [src]="getImageUrl(selectedMovie.backdrop_path)"
-      alt="{{ selectedMovie.title }}"
-    />
-    <h3>{{ getTitleOrName(selectedMovie) }}</h3>
-    <p class="overview">{{ selectedMovie.overview }}</p>
-    <div class="movie-details">
-      <p><strong>Genres:</strong> {{ selectedMovie.genre_ids.join(", ") }}</p>
-      <p>
-        <strong>Release date:</strong>
-        {{ selectedMovie.release_date | date : "yyyy" }}
-      </p>
-      <p>
-        <strong>Average vote:</strong>
-        {{ selectedMovie.vote_average | number : "1.1-1" }}
-      </p>
-      <p>
-        <strong>Original language:</strong>
-        {{ selectedMovie.original_language |uppercase }}
-      </p>
-      <p><strong>Age classification:</strong> Suitable for all ages</p>
+<div class="outer-overlay">
+  <div class="movie-info-overlay">
+    <div class="movie-info-content">
+      <div class="header">
+        <button class="close-button" (click)="closeMovieInfo()">x</button>
+      </div>
+      <img
+        class="overlay-image"
+        [src]="getImageUrl(selectedMovie.backdrop_path)"
+        alt="{{ selectedMovie.title }}"
+      />
+      <h3>{{ getTitleOrName(selectedMovie) }}</h3>
+      <p class="overview">{{ selectedMovie.overview }}</p>
+      <div class="movie-details">
+        <p><strong>Genres:</strong> {{ selectedMovie.genre_ids.join(", ") }}</p>
+        <p>
+          <strong>Release date:</strong>
+          {{ selectedMovie.release_date | date : "yyyy" }}
+        </p>
+        <p>
+          <strong>Average vote:</strong>
+          {{ selectedMovie.vote_average | number : "1.1-1" }}
+        </p>
+        <p>
+          <strong>Original language:</strong>
+          {{ selectedMovie.original_language | uppercase }}
+        </p>
+        <p><strong>Age classification:</strong> Suitable for all ages</p>
+      </div>
     </div>
   </div>
 </div>
