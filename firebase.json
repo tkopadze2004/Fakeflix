@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/Komokie-Fakeflix/browser",
+    "public": "dist/komokie-fakeflix/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
