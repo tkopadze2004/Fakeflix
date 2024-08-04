@@ -173,14 +173,25 @@
   }
 
   .close-button {
-    border-radius: 100%;
-    background: none;
+    background: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    font-size: 28px;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    right: 18px;
+    right: 10px;
+    top: 10px;
+    transition: 0.3s ease;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
   }
 
   .overlay-image {
@@ -251,7 +262,7 @@
     }
 
     .close-button {
-      top: 5%;
+      top: 3%;
     }
   }
 
@@ -280,12 +291,14 @@
       width: 120px;
     }
 
-    .scroll-button.left {
-      left: 10px;
-    }
+    .scroll-button {
+      &.left {
+        left: 10px;
+      }
 
-    .scroll-button.right {
-      right: 10px;
+      &.right {
+        right: 10px;
+      }
     }
 
     .actions img {
@@ -304,10 +317,6 @@
 
     .hover-info {
       margin-left: 10px;
-
-      .actions img {
-        width: 10px;
-      }
 
       h4 {
         font-size: 10px;
