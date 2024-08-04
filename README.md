@@ -7,13 +7,12 @@ Fakeflix is a modern web application built with Angular 18, designed to deliver 
 - **Angular 18**: Utilizes Angular 18 for the latest features and best practices in modern web development.
 - **User Authentication**: Secure login and registration functionalities managed through Firebase Authentication. Forms feature built-in validation (e.g., required fields, email format) as well as custom validators. Notably, a custom validator ensures password and confirmation password fields match, enhanscing the user registration experience and maintaining data integrity.
 - **Dynamic Banner**: The banner dynamically displays images generated through a random image service, adding visual interest and variability to the user interface.
-- **Movie Carousel**: A horizontally scrolling carousel of movie items with customizable settings for item width and scroll behavior.
+- **Customizable Movie Carousel**: A horizontally scrolling carousel that displays movie items with configurable options for item width and the number of items to scroll at once. This carousel allows for tailored settings to fit different design needs and scrolling behaviors.
 - **Movie Details Overlay**: Clicking on a movie item opens an overlay with detailed information about the selected movie, enhancing user interaction without page navigation.
 - **Responsive Design**: Ensures an optimal viewing experience on both mobile and desktop devices.
 - **Navbar with Logout feature**: Includes a navbar with an icon for logging out. Clicking this icon triggers a logout overlay where users can confirm their intention to log out.
 - **Route Guard**: Implements a route guard on the browse page to ensure that only authenticated users can access it, redirecting unauthenticated users to the login page.
-- **Real-Time Data Integration**: Connects to the TMDB API to fetch and display up-to-date movie information.
-- **Customizable Carousel**: Offers configurable options for item width, the number of items to scroll at once, and image base URL.
+- **Real-Time Data Integration**: Connects to the TMDB API to fetch and display up-to-date movie information.w
 - **Reactive Programming**: Uses RxJS for handling asynchronous operations and managing reactive data streams throughout the application.
 
 ## How It Works
@@ -29,7 +28,7 @@ Fakeflix is a modern web application built with Angular 18, designed to deliver 
 
 3. **Movie Browsing**:
 
-   - The browse page includes a navbar with a logout icon, a banner, and a horizontally scrolling movie carousel.
+   - The browse page includes a navbar with a logout icon, a banner, and a horizontally scrolling movie carousels.
    - Users can scroll through movie items using interactive buttons and view details by clicking on an item.
 
 4. **Movie Details**:
