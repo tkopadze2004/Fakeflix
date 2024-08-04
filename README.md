@@ -38,6 +38,10 @@ Fakeflix is a modern web application built with Angular 18, designed to deliver 
 5. **Logout**:
    - The navbar features an icon for logging out. Clicking this icon opens a logout overlay where users can confirm their intention to log out. This ensures a secure and user-friendly way to exit their account, with Firebase managing the session and redirecting to the login page upon confirmation.
 
+## Live Demo
+
+Check out the live demo of the Fakeflix application: [Fakeflix Live Demo](https://fakeflix-f0041.web.app/)
+
 ## Installation
 
 To set up and run the project locally:
