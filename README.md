@@ -1,10 +1,6 @@
 # Fakeflix
 
-Fakeflix is a standalone web application created with Angular 18, designed to provide an engaging experience for browsing movies. Users can authenticate using Firebase, explore a movie carousel with interactive features, and view detailed movie information in a fully responsive layout.
-
-## Introduction
-
-Fakeflix is a modern web application built with Angular 18, focusing on delivering a rich and interactive movie browsing experience. The application integrates with Firebase for user authentication and connects to the TMDB API to fetch real-time movie data. It is designed to be fully responsive, providing an optimal user experience across different devices and screen sizes, all while avoiding the use of external UI libraries.
+Fakeflix is a modern web application built with Angular 18, designed to deliver an engaging and interactive movie browsing experience. Leveraging Firebase for user authentication and integrating with the TMDB API for real-time movie data, Fakeflix provides a fully responsive layout optimized for various devices and screen sizes. The application features a dynamic movie carousel, interactive elements, and detailed movie information, all without relying on external UI libraries.
 
 ## Features
 
@@ -18,6 +14,7 @@ Fakeflix is a modern web application built with Angular 18, focusing on deliveri
 - **Route Guard**: Implements a route guard on the browse page to ensure that only authenticated users can access it, redirecting unauthenticated users to the login page.
 - **Real-Time Data Integration**: Connects to the TMDB API to fetch and display up-to-date movie information.
 - **Customizable Carousel**: Offers configurable options for item width, the number of items to scroll at once, and image base URL.
+- **Reactive Programming**: Uses RxJS for handling asynchronous operations and managing reactive data streams throughout the application.
 
 ## How It Works
 
@@ -29,7 +26,6 @@ Fakeflix is a modern web application built with Angular 18, focusing on deliveri
 2. **Dynamic Banner**:
 
    - The banner on the browse page displays an image fetched from the `getNetflixTVShows` endpoint. This endpoint provides a random image related to Netflix TV shows, adding visual interest and variability to the user interface.
-
 
 3. **Movie Browsing**:
 
